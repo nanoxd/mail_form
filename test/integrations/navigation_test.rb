@@ -21,4 +21,17 @@ class NavigationTest < ActiveSupport::IntegrationCase
     assert_equal ["recipient@example.com"], mail.to
     assert_match "Message: MailForm rocks!", mail.body.encoded
   end
+
+  test 'an email is spam if nickname is entered' do
+    visit "/"
+
+    fill_in "Name"    , with: "John Doe"
+    fill_in "Email"   , with: "john.doe@example.com"
+    fill_in "Message" , with: "MailForm rocks!"
+    fill_in "Nickname", with: "Yo"
+
+    click_button "Deliver"
+    assert_match "Nickname is invalid", page.body
+    assert_equal 0, ActionMailer::Base.deliveries.size
+  end
 end

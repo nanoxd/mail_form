@@ -1,5 +1,7 @@
 class ContactForm < MailForm::Base
-  attributes :name, :email, :message
+  validates :email, presence: true
+  validates :nickname, absence: true
+  attributes :name, :email, :message, :nickname
 
   def headers
     { to: "recipient@example.com", from: self.email }

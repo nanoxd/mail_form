@@ -16,12 +16,16 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :email %>
+    <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :message %>
+    <%= f.label :message %><br />
     <%= f.text_field :message %>
+  </div>
+  <div class="field spam">
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname %>
   </div>
   <div class="actions">
     <%= f.submit "Deliver" %>
