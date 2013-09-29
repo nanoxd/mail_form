@@ -22,7 +22,7 @@ class NavigationTest < ActiveSupport::IntegrationCase
     assert_match "Message: MailForm rocks!", mail.body.encoded
   end
 
-  test 'an email is spam if nickname is entered' do
+  test 'an email is spam if a nickname is entered' do
     visit "/"
 
     fill_in "Name"    , with: "John Doe"
